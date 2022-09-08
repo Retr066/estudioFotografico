@@ -1,9 +1,9 @@
-import { Layout } from "../components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhoneSquareAlt, faEnvelope, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faHome, faPhoneSquareAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
 
-import Image from "next/image";
-import { FormContacto } from "../components";
+import { FormContacto, Layout } from '../components';
+
 export default function contacto() {
   return (
     <Layout title="Contactos | Estudio Fotografico Perez " description="Para contactos y trabajar con la empresa Estudio Fotografico Perez">
@@ -46,7 +46,7 @@ export default function contacto() {
               </div>
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 d-flex">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d344.8508037428814!2d-76.98025489645579!3d-12.075043490503468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c728e753d155%3A0xad3a4d4361b25adb!2sEstudio%20Fotografico%20Perez!5e0!3m2!1ses-419!2spe!4v1640383784190!5m2!1ses-419!2spe"
               width="600"
