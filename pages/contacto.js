@@ -42,7 +42,7 @@ export default function contacto() {
                 <div className="row align-items-start" style={{ fontWeight: "bold" }}>
                   TELEFONO
                 </div>
-                <div className="row align-items-start">+ 51 989 882 819</div>
+                <div className="row align-items-start">+ 51 924 606 740</div>
               </div>
             </div>
           </div>
