@@ -1,11 +1,17 @@
 import Image from "next/image";
-import { Layout } from "../components";
-import style from "../styles/Home.module.css";
+import styles from './styles.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faCameraRetro } from "@fortawesome/free-solid-svg-icons";
+import type { Metadata } from "next";
+
+export const metadata : Metadata = {
+  title: "Nosotros | Estudio Fotográfico Perez",
+  description: "A que se dedica la micro empresa Estudio Fotográfico Perez",
+}
+
+
 export default function nosotros() {
   return (
-    <Layout title="Nosotros | Estudio Fotografico Perez" description="A que se dedica la micro empresa Estudio Fotografico Perez">
       <div className="container-fluid my-5">
         <div className="row justify-content-center ">
           <div className="col-md-4">
@@ -19,14 +25,15 @@ export default function nosotros() {
               <Image
                 className="img-fluid rounded  border border-primary"
                 src="https://res.cloudinary.com/duaj7oxcq/image/upload/v1640225721/estudio_fotografico_perez/nosotros_ziozwj.jpg"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="100%"
                 alt="fotografo sobre nosotros"
                 priority
               />
             </div>
           </div>
-          <div className={`col-md-4 ${style.margin} align-self-center text-center`}>
+          <div className={`col-md-4 ${styles.margin} align-self-center text-center`}>
             <h1 className="text-center">Nosotros</h1>
             <p>
               Somos una Microempresa dedicada al rubro fotográfico, nos orientamos a brindar soluciones e ideas creativas para tus
@@ -47,6 +54,5 @@ export default function nosotros() {
           </div>
         </div>
       </div>
-    </Layout>
   );
 }

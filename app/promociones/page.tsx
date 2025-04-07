@@ -1,10 +1,14 @@
 import Image from 'next/image';
+import type { Metadata } from "next";
+import { Layout } from '../../components';
 
-import { Layout } from '../components';
+export const metadata: Metadata = {
+  title: "Promociones | Estudio Fotográfico Perez",
+  description: "Promociones que ofrece la empresa Estudio Fotográfico Perez",
+}
 
 export default function promociones() {
   return (
-    <Layout title="Promociones | Estudio Fotográfico Perez" description="Promociones que ofrece la empresa Estudio Fotográfico Perez">
       <div className="container-fluid my-5">
         <div className="row justify-content-center ">
           <div className="col-md-8">
@@ -13,10 +17,9 @@ export default function promociones() {
                 <Image
                   className="img-fluid rounded border border-primary"
                   src="/promociones.jpeg"
-                  layout="responsive"
                   width={800}
                   height={1000}
-                  objectFit="cover"
+                  style={{ objectFit: "cover" }}
                   alt="fotografo sobre nosotros"
                   priority
                 />
@@ -39,6 +42,5 @@ export default function promociones() {
           </div>
         </div>
       </div>
-    </Layout>
   );
 }

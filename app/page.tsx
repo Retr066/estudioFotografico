@@ -1,9 +1,9 @@
-import { Carrusel, Layout, ListCards } from '../components';
+import { Carrusel, ListCards } from '../components';
 
 const Home = () => {
   return (
     <>
-      <Layout title="Estudio Perez" description="Estudio Fotografico Perez">
+    
         <Carrusel />
         <section className="container my-5">
           <div className="row align-items-center">
@@ -24,7 +24,7 @@ const Home = () => {
           </div>
         </section>
         <ListCards />
-      </Layout>
+    
     </>
   );
 };

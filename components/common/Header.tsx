@@ -1,19 +1,21 @@
+'use client';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 
 import logo from '../../public/EFP3.svg';
-import styles from '../../styles/Home.module.css';
+import styles from '../../app/nosotros/styles.module.css';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
-  const router = useRouter();
+  const pathname = usePathname();
   return (
     <header>
       <nav className={`${styles.header} navbar navbar-expand-lg navbar-light bg-light`}>
         <div className="container-fluid">
-          <Link href="/" passHref>
+          <Link href="/" passHref legacyBehavior>
             <a className="navbar-brand d-flex align-items-center">
               <Image src={logo} alt="logo Estudio Fotográfico Perez" width="90" height="90" className="d-inline-block align-text-top" />
               <span className="ms-2 d-none d-sm-block">Estudio Fotográfico Pérez</span>
@@ -34,8 +36,8 @@ export default function Header() {
           <div className="collapse navbar-collapse justify-content-end" id="navbarColor02">
             <ul className="navbar-nav d-flex ">
               <li className="nav-item">
-                <Link href="/" passHref>
-                  <a className={`nav-link ${router.pathname == "/" ? "active" : ""} `}>
+                <Link href="/" passHref legacyBehavior>
+                  <a className={`nav-link ${pathname == "/" ? "active" : ""} `}>
                     <FontAwesomeIcon icon={faHome} style={{ width: 25, height: 25 }} />
                   </a>
                 </Link>
@@ -43,10 +45,10 @@ export default function Header() {
               <li className="nav-item dropdown">
                 <a
                   className={`nav-link dropdown-toggle  ${
-                    router.pathname == "/servicios/impresiones" ||
-                    router.pathname == "/servicios/cuadros" ||
-                    router.pathname == "/servicios/sesion-fotografico" ||
-                    router.pathname == "/servicios/diseno-grafico"
+                    pathname == "/servicios/impresiones" ||
+                    pathname == "/servicios/cuadros" ||
+                    pathname == "/servicios/sesion-fotografico" ||
+                    pathname == "/servicios/diseno-grafico"
                       ? "active"
                       : ""
                   } `}
@@ -59,41 +61,41 @@ export default function Header() {
                   Servicios
                 </a>
                 <div className="dropdown-menu">
-                  <Link href="/servicios/impresiones" passHref>
-                    <a className={`dropdown-item  ${router.pathname == "/servicios/impresiones" ? "active" : ""} `}>Impresiones</a>
+                  <Link href="/servicios/impresiones" passHref legacyBehavior>
+                    <a className={`dropdown-item  ${pathname == "/servicios/impresiones" ? "active" : ""} `}>Impresiones</a>
                   </Link>
                   <div className="dropdown-divider"></div>
-                  <Link href="/servicios/sesion-fotografico" passHref>
-                    <a className={`dropdown-item  ${router.pathname == "/servicios/sesion-fotografico" ? "active" : ""} `}>
+                  <Link href="/servicios/sesion-fotografico" passHref legacyBehavior>
+                    <a className={`dropdown-item  ${pathname == "/servicios/sesion-fotografico" ? "active" : ""} `}>
                       Sesión Fotográfico
                     </a>
                   </Link>
 
                   <div className="dropdown-divider"></div>
-                  <Link href="/servicios/cuadros" passHref>
-                    <a className={`dropdown-item  ${router.pathname == "/servicios/cuadros" ? "active" : ""} `}>Cuadros</a>
+                  <Link href="/servicios/cuadros" passHref legacyBehavior> 
+                    <a className={`dropdown-item  ${pathname == "/servicios/cuadros" ? "active" : ""} `}>Cuadros</a>
                   </Link>
 
                   <div className="dropdown-divider"></div>
-                  <Link href="/servicios/diseno-grafico" passHref>
-                    <a className={`dropdown-item  ${router.pathname == "/servicios/diseno-grafico" ? "active" : ""} `}>Diseño Gráfico</a>
+                  <Link href="/servicios/diseno-grafico" passHref legacyBehavior>
+                    <a className={`dropdown-item  ${pathname == "/servicios/diseno-grafico" ? "active" : ""} `}>Diseño Gráfico</a>
                   </Link>
                 </div>
               </li>
 
               <li className="nav-item">
-                <Link href="/nosotros" passHref>
-                  <a className={`nav-link ${router.pathname == "/nosotros" ? "active" : ""} `}>Nosotros</a>
+                <Link href="/nosotros" passHref legacyBehavior>
+                  <a className={`nav-link ${pathname == "/nosotros" ? "active" : ""} `}>Nosotros</a>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/promociones" passHref>
-                  <a className={`nav-link ${router.pathname == "/promociones" ? "active" : ""} `}>Promociones</a>
+                <Link href="/promociones" passHref legacyBehavior>
+                  <a className={`nav-link ${pathname == "/promociones" ? "active" : ""} `}>Promociones</a>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/contacto" passHref>
-                  <a className={`nav-link ${router.pathname == "/contacto" ? "active" : ""} `}>Contactanos</a>
+                <Link href="/contacto" passHref legacyBehavior>
+                  <a className={`nav-link ${pathname == "/contacto" ? "active" : ""} `}>Contactanos</a>
                 </Link>
               </li>
             </ul>

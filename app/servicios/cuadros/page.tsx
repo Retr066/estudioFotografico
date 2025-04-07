@@ -1,11 +1,16 @@
 import Image from 'next/image';
 
-import { Layout } from '../../components';
+import { Layout } from '@/components'
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Cuadros | Estudio Fotográfico Perez",
+  description: "Cuadros que ofrece la empresa Estudio Fotográfico Perez",
+};
 
 export default function cuadros() {
   return (
     <>
-      <Layout title="Cuadros" description="Cuadros Fotográficos">
         <section className="container-fluid   text-dark">
           {/* <div className="row align-items-center text-center mx-5 mb-5">
             <div className="col">
@@ -22,7 +27,14 @@ export default function cuadros() {
                 height: "90vh",
               }}
             >
-              <Image src="/cuadro1.jpg" alt="imagen de losbos en 4k" className="img-fluid" layout="fill" objectFit="cover" />
+              <Image 
+              src="/cuadro1.jpg" 
+              alt="imagen de losbos en 4k" 
+              className="img-fluid" 
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="100%"
+               />
             </div>
             <figure className="text-center position-absolute " style={{ color: "#fff" }}>
               <blockquote className="blockquote">
@@ -44,10 +56,9 @@ export default function cuadros() {
                   className="img-fluid rounded border border-primary w-100"
                   src="/cuadro3.jpg"
                   alt="Cuadro de niña"
-                  layout="responsive"
                   width={800}
                   height={1000}
-                  objectFit="cover"
+                  style={{ objectFit: "cover" }}
                   priority
                 />
               </div>
@@ -73,7 +84,6 @@ export default function cuadros() {
             </div>
           </div>
         </section>
-      </Layout>
     </>
   );
 }

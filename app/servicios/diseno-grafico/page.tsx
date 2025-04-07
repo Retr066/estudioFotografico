@@ -1,13 +1,14 @@
 import Image from 'next/image';
+import type { Metadata } from "next";
+import { Layout } from '@/components';
 
-import { Layout } from '../../components';
+export const metadata: Metadata = {
+  title: "Diseño Gráfico | Estudio Fotográfico Perez",
+  description: "Servicios de diseño gráfico que ofrece la empresa Estudio Fotográfico Perez",
+};
 
 export default function diseñoGráfico() {
   return (
-    <Layout
-      title="Diseño Gráfico | Estudio Fotográfico Perez"
-      description="Servicios de diseño gráfico que ofrece la empresa Estudio Fotográfico Perez"
-    >
       <div className="container-fluid">
         <div className="row justify-content-center align-items-end">
           <div
@@ -16,7 +17,13 @@ export default function diseñoGráfico() {
               height: "90vh",
             }}
           >
-            <Image src="/diseno.jpg" alt="Diseño Gráfico" className="img-fluid" layout="fill" objectFit="cover" priority />
+            <Image 
+            src="/diseno.jpg" 
+            alt="Diseño Gráfico" 
+            className="img-fluid" 
+            fill
+            style={{ objectFit: "cover" }}
+            priority />
           </div>
           <figure className="text-center position-absolute " style={{ color: "#fff" }}>
             <blockquote className="blockquote">
@@ -43,10 +50,9 @@ export default function diseñoGráfico() {
                 <Image
                   className="img-fluid rounded  border border-primary"
                   src="/foto_restauracion.jpg"
-                  layout="responsive"
                   width={800}
                   height={600}
-                  objectFit="cover"
+                  style={{ objectFit: "cover" }}
                   alt="fotografo sobre nosotros"
                   priority
                 />
@@ -81,6 +87,5 @@ export default function diseñoGráfico() {
           </div>
         </div>
       </div>
-    </Layout>
   );
 }

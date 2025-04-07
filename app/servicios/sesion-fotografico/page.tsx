@@ -1,13 +1,17 @@
 import Image from "next/image";
-import { Layout } from "../../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Foto Estudio | Estudio Fotográfico Perez ",
+  description:
+    "El foto profesional que se toma en un estudio para mejor calidad y mas calidad es uno de los Servicios que ofrece la empresa Estudio Fotográfico Perez",
+};
+
 export default function sesionFotografico() {
   return (
-    <Layout
-      title="Foto Estudio | Estudio Fotografico Perez "
-      description="El foto profesional que se toma en un estudio para mejor calidad y mas calidad es uno de los Servicios que ofrece la empresa Estudio Fotografico Perez"
-    >
+   
       <div className="container-fluid mb-5">
         <div className="row justify-content-center align-items-end">
           <div
@@ -20,8 +24,8 @@ export default function sesionFotografico() {
               src="https://res.cloudinary.com/duaj7oxcq/image/upload/v1640912070/estudio_fotografico_perez/photo-studio_pimf2c.jpg"
               alt="Estudio Fotografico Perez"
               className="img-fluid"
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: "cover" }}
             />
           </div>
           <figure
@@ -51,9 +55,10 @@ export default function sesionFotografico() {
               <Image
                 className="img-fluid rounded  border border-primary"
                 src="https://res.cloudinary.com/duaj7oxcq/image/upload/v1640912179/estudio_fotografico_perez/photographer_tudiff.jpg"
-                layout="fill"
-                objectFit="cover"
-                alt="Tinta de las impresiones de fotografias"
+                fill
+                sizes="100%"
+                style={{ objectFit: "cover" }}
+                alt="Hombre tomando fotos"
               />
             </div>
           </div>
@@ -99,6 +104,6 @@ export default function sesionFotografico() {
           </div>
         </div>
       </div>
-    </Layout>
+   
   );
 }

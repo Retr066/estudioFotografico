@@ -1,3 +1,4 @@
+"use client";
 import emailjs from '@emailjs/browser';
 import { useFormik } from 'formik';
 import { useRef } from 'react';
@@ -13,7 +14,7 @@ const initialState = {
   mensaje: "",
 };
 export default function FormContacto() {
-  const form = useRef();
+  const form = useRef<HTMLFormElement | null>(null);
 
   const { handleSubmit, errors, touched, getFieldProps, resetForm } = useFormik({
     initialValues: initialState,
@@ -25,7 +26,7 @@ export default function FormContacto() {
       mensaje: Yup.string().required("El mensaje es obligatorio"),
     }),
     onSubmit: () => {
-      emailjs.sendForm("service_r9dtv8h", "template_dftq1ws", form.current, "xpHJVPgZJ4Hq8Yx4n").then(
+      emailjs.sendForm("service_r9dtv8h", "template_dftq1ws", form.current!, "user_4q0v1x2r7X8Z5j3J6Y9e5").then(
         (result) => {
           console.log(result.text);
           resetForm();
@@ -61,12 +62,12 @@ export default function FormContacto() {
               <input
                 type="email"
                 className="form-control"
-                id="floatingInput"
+                id="floatingEmail"
                 placeholder="name@example.com"
                 {...getFieldProps("email")}
                 required
               />
-              <label htmlFor="floatingInput">Email </label>
+              <label htmlFor="floatingEmail">Email </label>
 
               {touched.email && errors.email && <div className="alert alert-danger">{errors.email}</div>}
             </div>
@@ -76,12 +77,12 @@ export default function FormContacto() {
               <input
                 type="text"
                 className="form-control"
-                id="floatingInput"
+                id="floatingApellido"
                 placeholder="lastName"
                 {...getFieldProps("apellidos")}
                 required
               />
-              <label htmlFor="floatingInput">Apellidos</label>
+              <label htmlFor="floatingApellido">Apellidos</label>
 
               {touched.apellidos && errors.apellidos && <div className="alert alert-danger">{errors.apellidos}</div>}
             </div>

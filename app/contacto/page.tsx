@@ -2,15 +2,20 @@ import { faEnvelope, faHome, faPhoneSquareAlt } from '@fortawesome/free-solid-sv
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 
-import { FormContacto, Layout } from '../components';
+import { FormContacto } from '@/components';
+import type { Metadata } from "next";
+
+export const metadata :Metadata = {
+  title: "Contactos | Estudio Fotográfico Perez",
+  description: "Para contactos y trabajar con la empresa Estudio Fotográfico Perez",
+}
 
 export default function contacto() {
   return (
-    <Layout title="Contactos | Estudio Fotografico Perez " description="Para contactos y trabajar con la empresa Estudio Fotografico Perez">
       <div className="container-fluid my-5">
         <div className="row justify-content-center ">
           <div className="col-md-4">
-            <h1>Ubicacion</h1>
+            <h1>Ubicación</h1>
 
             <div className="row align-items-start my-5">
               <div className="col-2 d-flex justify-content-end">
@@ -18,7 +23,7 @@ export default function contacto() {
               </div>
               <div className="col-9">
                 <div className="row align-items-start" style={{ fontWeight: "bold" }}>
-                  DIRECCION
+                  DIRECCIÓN
                 </div>
                 <div className="row align-items-start">AV.Los Quechuas Nº 1142 Salamanca Ate</div>
               </div>
@@ -69,8 +74,9 @@ export default function contacto() {
               <Image
                 className="img-fluid rounded  border border-primary"
                 src="https://res.cloudinary.com/duaj7oxcq/image/upload/v1640388794/estudio_fotografico_perez/contactos_fx6tcq.jpg"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
+                sizes='100%'
                 alt="fotografo sobre nosotros"
                 priority
               />
@@ -81,6 +87,5 @@ export default function contacto() {
           </div>
         </div>
       </div>
-    </Layout>
   );
 }

@@ -67,7 +67,10 @@ export default function Carrusel() {
             className={`carousel-item ${imagen.id === 1 ? "active" : ""}`}
             data-bs-interval={imagen.id === 1 ? "8000" : "4000"}
           >
-            <Image src={imagen.src} alt={imagen.alt} layout="fill" objectFit="cover" quality={100} />
+            <Image src={imagen.src} alt={imagen.alt} 
+              fill
+              style={{ objectFit: "cover" }}
+              quality={100} />
             <div className="carousel-caption d-none d-md-block">
               <h5 style={{ color: imagen.color }}>{imagen.titulo}</h5>
               <p style={{ color: imagen.color }}>{imagen.descripcion}</p>

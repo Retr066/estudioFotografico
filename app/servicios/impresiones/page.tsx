@@ -1,13 +1,14 @@
 import Image from 'next/image';
+import type { Metadata } from "next";
+import { Layout } from '../../../components';
 
-import { Layout } from '../../components';
+export const metadata: Metadata = {
+  title: "Impresiones | Estudio Fotográfico Perez",
+  description: "Las Impresiones de imágenes o fotos para cuadros es uno de los Servicios que ofrece la empresa Estudio Fotográfico Perez",
+};
 
 export default function impresiones() {
   return (
-    <Layout
-      title="Impresiones | Estudio Fotográfico Perez "
-      description="Las Impresiones de imágenes o fotos para cuadros es uno de los Servicios que ofrece la empresa Estudio Fotográfico Perez"
-    >
       <div className="container-fluid mb-5">
         <div className="row justify-content-center align-items-end">
           <div
@@ -18,10 +19,12 @@ export default function impresiones() {
           >
             <Image
               src="https://res.cloudinary.com/duaj7oxcq/image/upload/v1640294572/estudio_fotografico_perez/impresiones_baner_nv2z0n.jpg"
-              alt="imagen de losbos en 4k"
+              alt="Conjunto de fotos impresas"
               className="img-fluid"
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="100%"
+              priority
             />
           </div>
           <figure className="text-center position-absolute " style={{ color: "#fff" }}>
@@ -48,8 +51,9 @@ export default function impresiones() {
               <Image
                 className="img-fluid rounded  border border-primary"
                 src="https://res.cloudinary.com/duaj7oxcq/image/upload/v1640230118/estudio_fotografico_perez/pagina_impresiones_ywyuml.jpg"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="100%"
                 alt="Tinta de las impresiones de fotografías"
               />
             </div>
@@ -130,14 +134,14 @@ export default function impresiones() {
               <Image
                 className="img-fluid rounded  border border-primary"
                 src="https://res.cloudinary.com/duaj7oxcq/image/upload/v1640303365/estudio_fotografico_perez/ampliaciones_mi5myb.jpg"
-                layout="fill"
-                objectFit="fill"
+                fill
+                style={{ objectFit: "cover" }}
+                sizes='100%'
                 alt="Tinta de las impresiones de fotografias"
               />
             </div>
           </div>
         </div>
       </div>
-    </Layout>
   );
 }

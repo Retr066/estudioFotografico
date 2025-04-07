@@ -51,18 +51,18 @@ export default React.forwardRef(function Footer() {
                 <h6 className="text-uppercase fw-bold mb-4">Enlaces útiles</h6>
 
                 <p>
-                  <Link href="/nosotros" passHref>
+                  <Link href="/nosotros" passHref legacyBehavior>
                     <a className="text-reset">Nosotros</a>
                   </Link>
                 </p>
                 <p>
-                  <Link href="/promociones" passHref>
+                  <Link href="/promociones" passHref legacyBehavior>
                     <a className="text-reset">Promociones</a>
                   </Link>
                 </p>
 
                 <p>
-                  <Link href="/contacto" passHref>
+                  <Link href="/contacto" passHref legacyBehavior>
                     <a className="text-reset">Contactanos</a>
                   </Link>
                 </p>
