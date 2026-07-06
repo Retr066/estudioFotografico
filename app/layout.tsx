@@ -93,6 +93,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  verification: {
+    google: "BKqZAPTXlDi1WxFvebroZSUH9P6ml_1Zla3EQf_M24w",
+  },
 };
 
 const structuredData = {
