@@ -3,7 +3,7 @@ import Head from "next/head";
 import Footer from "./Footer";
 import Header from "./Header";
 
-export default function Layout({ children, ...props }) {
+export default function Layout({ children, ...props }: { children: React.ReactNode; title?: string; description?: string }) {
   return (
     <>
       <Head>
