@@ -1,9 +1,0 @@
-.header {
-  padding: 0 !important;
-}
-
-@media all and (max-width: 770px) {
-  .margin {
-    margin-top: 2em;
-  }
-}

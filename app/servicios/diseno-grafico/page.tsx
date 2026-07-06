@@ -1,91 +1,71 @@
-import Image from 'next/image';
-import type { Metadata } from "next";
-import { Layout } from '@/components';
+import { Eraser, ImageDown, Wand2 } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: "Diseño Gráfico | Estudio Fotográfico Perez",
-  description: "Servicios de diseño gráfico que ofrece la empresa Estudio Fotográfico Perez",
-};
+import BeforeAfter from '@/components/common/BeforeAfter';
+import ServiceCta from '@/components/common/ServiceCta';
+import ServiceHero from '@/components/common/ServiceHero';
+import FeatureGrid from '@/components/common/FeatureGrid';
+import { BlurFade } from '@/components/ui/blur-fade';
+import { pageMetadata } from '@/lib/seo';
 
-export default function diseñoGráfico() {
+export const metadata = pageMetadata({
+  title: 'Diseño Gráfico y Restauración',
+  description:
+    'Restauración de fotografías antiguas, retoque, fotomontaje y digitalización de imágenes. Dale una segunda vida a tus recuerdos más valiosos.',
+  path: '/servicios/diseno-grafico',
+});
+
+const features = [
+  {
+    icon: Wand2,
+    title: 'Restauración',
+    description: 'Corrección de color, rasgaduras y manchas en fotografías antiguas o dañadas.',
+  },
+  {
+    icon: Eraser,
+    title: 'Retoque y fotomontaje',
+    description: 'Eliminación de elementos, colorización y composición de nuevas imágenes.',
+  },
+  {
+    icon: ImageDown,
+    title: 'Digitalización',
+    description: 'Digitalización de fotos físicas a formato digital y ampliación de imágenes.',
+  },
+];
+
+export default function DisenoGrafico() {
   return (
-      <div className="container-fluid">
-        <div className="row justify-content-center align-items-end">
-          <div
-            style={{
-              position: "relative",
-              height: "90vh",
-            }}
-          >
-            <Image 
-            src="/diseno.jpg" 
-            alt="Diseño Gráfico" 
-            className="img-fluid" 
-            fill
-            style={{ objectFit: "cover" }}
-            priority />
-          </div>
-          <figure className="text-center position-absolute " style={{ color: "#fff" }}>
-            <blockquote className="blockquote">
-              <p className="mb-0">
-                La fotografía sólo puede representar el presente. Una vez fotografiados, el sujeto se convierte en parte del pasado
-              </p>
-            </blockquote>
-            <figcaption className="blockquote-footer" style={{ color: "#fff" }}>
-              Autor de la frase <cite title="Source Title">Berenice Abbott</cite>
-            </figcaption>
-          </figure>
+    <div>
+      <ServiceHero
+        src="/diseno.jpg"
+        alt="Diseño gráfico"
+        quote="La fotografía sólo puede representar el presente. Una vez fotografiados, el sujeto se convierte en parte del pasado."
+        author="Berenice Abbott"
+      />
+
+      <div className="mx-auto max-w-4xl px-6 py-20 text-center lg:px-10 lg:py-28">
+        <BlurFade inView>
+          <p className="font-sans text-xs tracking-[0.3em] text-bronze uppercase">Servicio</p>
+          <h1 className="mt-3 font-display text-4xl sm:text-5xl">Diseño gráfico</h1>
+          <p className="mx-auto mt-6 max-w-2xl leading-relaxed text-foreground/80">
+            Permítenos restaurar tu fotografía y traer al presente momentos inolvidables. Las
+            imágenes antiguas se desvanecen y se degradan con el tiempo: se agrietan, se rasgan y
+            se ensucian. Somos especialistas en restauración.
+          </p>
+        </BlurFade>
+
+        <BlurFade inView delay={0.1} className="mt-14 text-left">
+          <BeforeAfter before="/foto_restauracion.jpg" after="/foto_restauracion.jpg" alt="Restauración fotográfica" />
+          <p className="mt-3 text-center text-xs text-muted-foreground">
+            Arrastra para comparar el antes y el después de una restauración.
+          </p>
+        </BlurFade>
+
+        <div className="mt-20 text-left">
+          <FeatureGrid features={features} />
         </div>
 
-        <div className="row justify-content-center my-5">
-          <div className="col-md-8">
-            <h1 className="text-center">Diseño Gráfico</h1>
-            <p className="text-center mb-5">
-              Permita que podamos restaurar su fotografía y traer al presente momentos inolvidables. Las imágenes antiguas se desvanecen y
-              se degradan con el tiempo, Por lo que es importante corregir las fotos viejas y dañadas antes de que sea demasiado tarde.
-              También se agrietan, se rasgan y se ensucian. Somos especialistas en restauración.
-            </p>
-            <div className="row justify-content-center">
-              <div className="col-md-6 align-self-center ">
-                <Image
-                  className="img-fluid rounded  border border-primary"
-                  src="/foto_restauracion.jpg"
-                  width={800}
-                  height={600}
-                  style={{ objectFit: "cover" }}
-                  alt="fotografo sobre nosotros"
-                  priority
-                />
-              </div>
-              <div className="col-md-6">
-                <h5 className="text-center">Servicios que realizamos para las fotos</h5>
-                <ul className="list-group">
-                  <li className="list-group-item">
-                    <p>Digitalización de fotos a CD</p>
-                  </li>
-                  <li className="list-group-item">
-                    <p>Restauración de fotos antiguas</p>
-                  </li>
-                  <li className="list-group-item">
-                    <p>Colorización de Fotos</p>
-                  </li>
-                  <li className="list-group-item">
-                    <p>Eliminación de Elementos</p>
-                  </li>
-                  <li className="list-group-item">
-                    <p>Fotomontaje</p>
-                  </li>
-                  <li className="list-group-item">
-                    <p>Retoque Fotográfico</p>
-                  </li>
-                  <li className="list-group-item">
-                    <p>Ampliación de Fotografía</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ServiceCta text="¿Tienes una fotografía que merece una segunda vida?" />
       </div>
+    </div>
   );
 }

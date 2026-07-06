@@ -1,132 +1,94 @@
-"use client";
+'use client';
+
 import emailjs from '@emailjs/browser';
-import { useFormik } from 'formik';
-import { useRef } from 'react';
-import * as Yup from 'yup';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import { z } from 'zod';
 
-import { Toast } from '../../utils/eventSwal';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 
-const initialState = {
-  nombres: "",
-  apellidos: "",
-  email: "",
-  telefono: "",
-  mensaje: "",
-};
+const contactSchema = z.object({
+  nombres: z.string().min(1, 'El nombre es obligatorio'),
+  apellidos: z.string().min(1, 'El apellido es obligatorio'),
+  email: z.string().min(1, 'El email es obligatorio').email('El email no es válido'),
+  telefono: z.string().min(1, 'El teléfono es obligatorio'),
+  mensaje: z.string().min(1, 'El mensaje es obligatorio'),
+});
+
+type ContactFormValues = z.infer<typeof contactSchema>;
+
 export default function FormContacto() {
-  const form = useRef<HTMLFormElement | null>(null);
-
-  const { handleSubmit, errors, touched, getFieldProps, resetForm } = useFormik({
-    initialValues: initialState,
-    validationSchema: Yup.object({
-      nombres: Yup.string().required("El nombre es obligatorio"),
-      apellidos: Yup.string().required("El apellido es obligatorio"),
-      email: Yup.string().email("El email no es valido").required("El email es obligatorio"),
-      telefono: Yup.string().required("El telefono es obligatorio"),
-      mensaje: Yup.string().required("El mensaje es obligatorio"),
-    }),
-    onSubmit: () => {
-      emailjs.sendForm("service_r9dtv8h", "template_dftq1ws", form.current!, "user_4q0v1x2r7X8Z5j3J6Y9e5").then(
-        (result) => {
-          console.log(result.text);
-          resetForm();
-          Toast.fire({
-            icon: "success",
-            title: "Mensaje enviado correctamente",
-          });
-        },
-        (error) => {
-          console.log(error.text);
-          Toast.fire({
-            icon: "error",
-            title: "Error al enviar el mensaje",
-          });
-        }
-      );
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      nombres: '',
+      apellidos: '',
+      email: '',
+      telefono: '',
+      mensaje: '',
     },
   });
 
+  const onSubmit = async (data: ContactFormValues) => {
+    try {
+      await emailjs.send('service_r9dtv8h', 'template_dftq1ws', data, 'user_4q0v1x2r7X8Z5j3J6Y9e5');
+      reset();
+      toast.success('Mensaje enviado correctamente');
+    } catch {
+      toast.error('Error al enviar el mensaje');
+    }
+  };
+
   return (
-    <>
-      <h1 className="my-lg-0 my-sm-5">Envianos un mensaje</h1>
-      <form ref={form} onSubmit={handleSubmit}>
-        <div className="row">
-          <div className="col-6">
-            <div className="form-floating mb-3">
-              <input type="text" className="form-control" id="floatingInput" placeholder="name" {...getFieldProps("nombres")} required />
-              <label htmlFor="floatingInput">Nombres</label>
-
-              {touched.nombres && errors.nombres && <div className="alert alert-danger">{errors.nombres}</div>}
-            </div>
-            <div className="form-floating ">
-              <input
-                type="email"
-                className="form-control"
-                id="floatingEmail"
-                placeholder="name@example.com"
-                {...getFieldProps("email")}
-                required
-              />
-              <label htmlFor="floatingEmail">Email </label>
-
-              {touched.email && errors.email && <div className="alert alert-danger">{errors.email}</div>}
-            </div>
+    <div>
+      <h2 className="font-display text-3xl">Envíanos un mensaje</h2>
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-5">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div className="space-y-1.5">
+            <Label htmlFor="nombres">Nombres</Label>
+            <Input id="nombres" {...register('nombres')} />
+            {errors.nombres && <p className="text-xs text-destructive">{errors.nombres.message}</p>}
           </div>
-          <div className="col-6">
-            <div className="form-floating mb-3">
-              <input
-                type="text"
-                className="form-control"
-                id="floatingApellido"
-                placeholder="lastName"
-                {...getFieldProps("apellidos")}
-                required
-              />
-              <label htmlFor="floatingApellido">Apellidos</label>
-
-              {touched.apellidos && errors.apellidos && <div className="alert alert-danger">{errors.apellidos}</div>}
-            </div>
-            <div className="form-floating">
-              <input
-                type="tel"
-                className="form-control"
-                id="floatingPassword"
-                placeholder="Password"
-                pattern="^-?[0-9]\d*\.?\d*$"
-                {...getFieldProps("telefono")}
-                required
-              />
-              <label htmlFor="floatingPassword">Telefono o Celular</label>
-
-              {touched.telefono && errors.telefono && <div className="alert alert-danger">{errors.telefono}</div>}
-            </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="apellidos">Apellidos</Label>
+            <Input id="apellidos" {...register('apellidos')} />
+            {errors.apellidos && (
+              <p className="text-xs text-destructive">{errors.apellidos.message}</p>
+            )}
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="email">Email</Label>
+            <Input id="email" type="email" {...register('email')} />
+            {errors.email && <p className="text-xs text-destructive">{errors.email.message}</p>}
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="telefono">Teléfono o celular</Label>
+            <Input id="telefono" type="tel" {...register('telefono')} />
+            {errors.telefono && (
+              <p className="text-xs text-destructive">{errors.telefono.message}</p>
+            )}
           </div>
         </div>
-        <div className="row">
-          <div className="col my-3">
-            <div className="form-floating">
-              <textarea
-                className="form-control"
-                placeholder="Leave a comment here"
-                required
-                {...getFieldProps("mensaje")}
-                id="floatingTextarea2"
-                style={{ height: "185px" }}
-              ></textarea>
-              <label htmlFor="floatingTextarea2">Mensaje</label>
 
-              {touched.mensaje && errors.mensaje && <div className="alert alert-danger">{errors.mensaje}</div>}
-            </div>
-          </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="mensaje">Mensaje</Label>
+          <Textarea id="mensaje" rows={6} {...register('mensaje')} />
+          {errors.mensaje && <p className="text-xs text-destructive">{errors.mensaje.message}</p>}
         </div>
-        <div className="row">
-          <div className="col">
-            <button type="submit" className="w-100 btn btn-outline-primary ">
-              ENVIAR
-            </button>
-          </div>
-        </div>
+
+        <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto">
+          {isSubmitting ? 'Enviando…' : 'Enviar'}
+        </Button>
       </form>
-    </>
+    </div>
   );
 }

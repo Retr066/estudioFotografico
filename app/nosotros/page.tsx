@@ -1,58 +1,95 @@
-import Image from "next/image";
-import styles from './styles.module.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCamera, faCameraRetro } from "@fortawesome/free-solid-svg-icons";
-import type { Metadata } from "next";
+import Image from 'next/image';
+import { Aperture, Camera } from 'lucide-react';
 
-export const metadata : Metadata = {
-  title: "Nosotros | Estudio Fotográfico Perez",
-  description: "A que se dedica la micro empresa Estudio Fotográfico Perez",
-}
+import { BlurFade } from '@/components/ui/blur-fade';
+import { pageMetadata } from '@/lib/seo';
 
+export const metadata = pageMetadata({
+  title: 'Nosotros',
+  description:
+    'Conoce al Estudio Fotográfico Pérez: una microempresa en Ate, Lima dedicada a la fotografía, con un equipo enfocado en calidad, creatividad y atención personalizada.',
+  path: '/nosotros',
+  image:
+    'https://res.cloudinary.com/duaj7oxcq/image/upload/v1640225721/estudio_fotografico_perez/nosotros_ziozwj.jpg',
+});
 
-export default function nosotros() {
+const behindTheScenes = [
+  {
+    src: 'https://res.cloudinary.com/duaj7oxcq/image/upload/v1640912179/estudio_fotografico_perez/photographer_tudiff.jpg',
+    alt: 'Fotógrafo del estudio en plena sesión',
+  },
+  {
+    src: 'https://res.cloudinary.com/duaj7oxcq/image/upload/v1640912070/estudio_fotografico_perez/photo-studio_pimf2c.jpg',
+    alt: 'Foto estudio Pérez',
+  },
+];
+
+export default function Nosotros() {
   return (
-      <div className="container-fluid my-5">
-        <div className="row justify-content-center ">
-          <div className="col-md-4">
-            <div
-              style={{
-                width: "100%",
-                position: "relative",
-                height: "70vh",
-              }}
-            >
-              <Image
-                className="img-fluid rounded  border border-primary"
-                src="https://res.cloudinary.com/duaj7oxcq/image/upload/v1640225721/estudio_fotografico_perez/nosotros_ziozwj.jpg"
-                fill
-                style={{ objectFit: "cover" }}
-                sizes="100%"
-                alt="fotografo sobre nosotros"
-                priority
-              />
-            </div>
-          </div>
-          <div className={`col-md-4 ${styles.margin} align-self-center text-center`}>
-            <h1 className="text-center">Nosotros</h1>
-            <p>
-              Somos una Microempresa dedicada al rubro fotográfico, nos orientamos a brindar soluciones e ideas creativas para tus
-              proyectos. Nuestro objetivo es trasmitir a través de la fotografía, la historia que deseas contar o plamar en un recuerdo.
-            </p>
-            <div className="row justify-content-center ">
-              <div className="col">
-                <FontAwesomeIcon className="my-3" style={{ width: 40, height: 40 }} icon={faCameraRetro} />
-                <h2>Misión</h2>
-                <p>Brindar un servicio completo de: calidad, profesional y creatividad para nuestros clientes.</p>
-              </div>
-              <div className="col">
-                <FontAwesomeIcon className="my-3" style={{ width: 40, height: 40 }} icon={faCamera} />
-                <h2>Visión</h2>
-                <p>Convertirnos en una empresa consolidada en ambito de la fotografía.</p>
-              </div>
-            </div>
-          </div>
+    <div>
+      <div className="relative flex h-[60vh] min-h-[420px] items-end">
+        <Image
+          src="https://res.cloudinary.com/duaj7oxcq/image/upload/v1640225721/estudio_fotografico_perez/nosotros_ziozwj.jpg"
+          alt="Fotógrafo del Estudio Fotográfico Pérez trabajando"
+          fill
+          priority
+          sizes="100vw"
+          quality={90}
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-ink-950/85 via-ink-950/15 to-transparent" />
+        <div className="relative px-6 pb-16 lg:px-10">
+          <p className="font-sans text-xs tracking-[0.3em] text-bronze uppercase">Nosotros</p>
+          <h1 className="mt-3 font-display text-4xl text-bone sm:text-6xl">Detrás de cada fotografía</h1>
         </div>
       </div>
+
+      <div className="mx-auto max-w-4xl px-6 py-20 text-center lg:px-10 lg:py-28">
+        <BlurFade inView>
+          <p className="leading-relaxed text-foreground/80">
+            Somos una microempresa dedicada al rubro fotográfico. Acompañamos a cada cliente con
+            soluciones e ideas creativas para su proyecto, cuidando cada detalle del proceso: desde
+            la sesión hasta el recuerdo final que se lleva a casa.
+          </p>
+        </BlurFade>
+
+        <div className="mt-16 grid grid-cols-1 gap-10 text-left sm:grid-cols-2">
+          <BlurFade inView delay={0.1}>
+            <Aperture className="size-8 text-bronze" strokeWidth={1.25} />
+            <h2 className="mt-4 font-display text-2xl">Misión</h2>
+            <p className="mt-2 text-sm leading-relaxed text-foreground/70">
+              Brindar un servicio completo de calidad, profesionalismo y creatividad para
+              nuestros clientes.
+            </p>
+          </BlurFade>
+          <BlurFade inView delay={0.18}>
+            <Camera className="size-8 text-bronze" strokeWidth={1.25} />
+            <h2 className="mt-4 font-display text-2xl">Visión</h2>
+            <p className="mt-2 text-sm leading-relaxed text-foreground/70">
+              Convertirnos en una empresa consolidada dentro del ámbito de la fotografía.
+            </p>
+          </BlurFade>
+        </div>
+      </div>
+
+      <section className="mx-auto max-w-7xl px-6 pb-24 lg:px-10">
+        <BlurFade inView className="mb-10 text-center">
+          <p className="font-sans text-xs tracking-[0.3em] text-bronze uppercase">Detrás de cámaras</p>
+          <h2 className="mt-3 font-display text-3xl sm:text-4xl">El equipo en acción</h2>
+        </BlurFade>
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {behindTheScenes.map((photo, index) => (
+            <BlurFade
+              key={photo.src}
+              inView
+              delay={index * 0.1}
+              className="relative aspect-4/3 overflow-hidden rounded-sm"
+            >
+              <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover" />
+            </BlurFade>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }

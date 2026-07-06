@@ -1,147 +1,83 @@
 import Image from 'next/image';
-import type { Metadata } from "next";
-import { Layout } from '../../../components';
 
-export const metadata: Metadata = {
-  title: "Impresiones | Estudio Fotográfico Perez",
-  description: "Las Impresiones de imágenes o fotos para cuadros es uno de los Servicios que ofrece la empresa Estudio Fotográfico Perez",
-};
+import ServiceCta from '@/components/common/ServiceCta';
+import ServiceHero from '@/components/common/ServiceHero';
+import { BlurFade } from '@/components/ui/blur-fade';
+import { pageMetadata } from '@/lib/seo';
 
-export default function impresiones() {
+export const metadata = pageMetadata({
+  title: 'Impresiones Fotográficas',
+  description:
+    'Impresión fotográfica de alta calidad en distintos tamaños, desde 10x15 hasta 60x90 cm. Consulta precios y tiempos de entrega en el Estudio Fotográfico Pérez.',
+  path: '/servicios/impresiones',
+  image:
+    'https://res.cloudinary.com/duaj7oxcq/image/upload/v1640294572/estudio_fotografico_perez/impresiones_baner_nv2z0n.jpg',
+});
+
+const sizes = [
+  { size: '10x15', price: 'S./0.50' },
+  { size: '13x18', price: 'S./0.70' },
+  { size: '15x20', price: 'S./1.00' },
+  { size: '20x25', price: 'S./4.00' },
+  { size: '20x30', price: 'S./4.00' },
+  { size: '30x40', price: 'S./8.00' },
+  { size: '30x60', price: 'S./15.00' },
+  { size: '40x50', price: 'S./20.00' },
+  { size: '40x60', price: 'S./30.00' },
+  { size: '60x90', price: 'S./50.00' },
+];
+
+export default function Impresiones() {
   return (
-      <div className="container-fluid mb-5">
-        <div className="row justify-content-center align-items-end">
-          <div
-            style={{
-              position: "relative",
-              height: "90vh",
-            }}
-          >
+    <div>
+      <ServiceHero
+        src="https://res.cloudinary.com/duaj7oxcq/image/upload/v1640294572/estudio_fotografico_perez/impresiones_baner_nv2z0n.jpg"
+        alt="Conjunto de fotos impresas"
+        quote="La fotografía es, en un mismo instante, el reconocimiento simultáneo de la significación de un hecho y de la organización rigurosa de las formas percibidas visualmente que expresan y significan ese hecho."
+        author="Henri Cartier-Bresson"
+      />
+
+      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <BlurFade inView className="relative aspect-4/5 w-full overflow-hidden rounded-sm">
             <Image
-              src="https://res.cloudinary.com/duaj7oxcq/image/upload/v1640294572/estudio_fotografico_perez/impresiones_baner_nv2z0n.jpg"
-              alt="Conjunto de fotos impresas"
-              className="img-fluid"
+              src="https://res.cloudinary.com/duaj7oxcq/image/upload/v1640230118/estudio_fotografico_perez/pagina_impresiones_ywyuml.jpg"
               fill
-              style={{ objectFit: "cover" }}
-              sizes="100%"
-              priority
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="object-cover"
+              alt="Tinta de las impresiones de fotografías"
             />
-          </div>
-          <figure className="text-center position-absolute " style={{ color: "#fff" }}>
-            <blockquote className="blockquote">
-              <p className="mb-0">
-                La fotografía es, en un mismo instante, el reconocimiento simultáneo de la significación de un hecho y de la organización
-                rigurosa de las formas percibidas visualmente que expresan y significan ese hecho
-              </p>
-            </blockquote>
-            <figcaption className="blockquote-footer" style={{ color: "#fff" }}>
-              Autor de la frase <cite title="Source Title">Henri Cartier-Bresson</cite>
-            </figcaption>
-          </figure>
-        </div>
-        <div className="row justify-content-center my-5">
-          <div className="col-md-5">
-            <div
-              style={{
-                width: "100%",
-                position: "relative",
-                height: "70vh",
-              }}
-            >
-              <Image
-                className="img-fluid rounded  border border-primary"
-                src="https://res.cloudinary.com/duaj7oxcq/image/upload/v1640230118/estudio_fotografico_perez/pagina_impresiones_ywyuml.jpg"
-                fill
-                style={{ objectFit: "cover" }}
-                sizes="100%"
-                alt="Tinta de las impresiones de fotografías"
-              />
-            </div>
-          </div>
-          <div className="col-md-5 align-self-center text-center">
-            <h1 className="text-center">IMPRESIONES</h1>
-            <p>
-              Somos una Microempresa dedicada al rubro fotográfico, nos orientamos a brindar soluciones e ideas creativas para tus
-              proyectos. Nuestro objetivo es trasmitir a través de la fotografía, la historia que deseas contar o plasmar en un recuerdo.
+          </BlurFade>
+          <BlurFade inView delay={0.1}>
+            <p className="font-sans text-xs tracking-[0.3em] text-bronze uppercase">Servicio</p>
+            <h1 className="mt-3 font-display text-4xl sm:text-5xl">Impresiones</h1>
+            <p className="mt-6 leading-relaxed text-foreground/80">
+              Somos una microempresa dedicada al rubro fotográfico, nos orientamos a brindar
+              soluciones e ideas creativas para tus proyectos. Nuestro objetivo es transmitir, a
+              través de la fotografía, la historia que deseas contar o plasmar en un recuerdo.
             </p>
-          </div>
+          </BlurFade>
         </div>
-        <div className="row justify-content-center my-5">
-          <div className="col-md-5 align-self-center text-center">
-            <h1 className="text-center">TAMAÑOS</h1>
-            <div className="row justify-content-center my-5 ">
-              <div className="col">
-                <ul className="list-group">
-                  <li className="list-group-item d-flex justify-content-between align-items-center">
-                    10x15
-                    <span className="badge bg-primary rounded-pill">S./0.50</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between align-items-center">
-                    13x18
-                    <span className="badge bg-primary rounded-pill">S./0.70</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between align-items-center">
-                    15x20
-                    <span className="badge bg-primary rounded-pill">S./1.00</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between align-items-center">
-                    20x25
-                    <span className="badge bg-primary rounded-pill">S./4.00</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between align-items-center">
-                    20x30
-                    <span className="badge bg-primary rounded-pill">S./4.00</span>
-                  </li>
-                </ul>
+
+        <BlurFade inView className="mt-24 text-center">
+          <h2 className="font-display text-3xl sm:text-4xl">Tamaños y precios</h2>
+          <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground">
+            Precios por unidad, incluyen IGV y no incluyen el marco. Son aproximaciones del mercado
+            actual: consulta los precios vigentes por WhatsApp.
+          </p>
+
+          <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-3 text-left sm:grid-cols-3 lg:grid-cols-5">
+            {sizes.map((item) => (
+              <div key={item.size} className="rounded-sm border border-border bg-card px-5 py-6 text-center">
+                <p className="text-sm text-muted-foreground">{item.size}</p>
+                <p className="mt-2 font-display text-2xl text-bronze">{item.price}</p>
               </div>
-              <div className="col">
-                <ul className="list-group">
-                  <li className="list-group-item d-flex justify-content-between align-items-center">
-                    30x40
-                    <span className="badge bg-primary rounded-pill">S./8.00</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between align-items-center">
-                    30x60
-                    <span className="badge bg-primary rounded-pill">S./15.00</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between align-items-center">
-                    40x50
-                    <span className="badge bg-primary rounded-pill">S./20.00</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between align-items-center">
-                    40x60
-                    <span className="badge bg-primary rounded-pill">S./30.00</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between align-items-center">
-                    60x90
-                    <span className="badge bg-primary rounded-pill">S./50.00</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <p>Los precios son por unidad, incluyen IGV y no incluyen el marco.</p>
-            <h3>Advertencia:</h3>
-            <p>Los precios son aproximaciones del mercado actual, se puede poner en contacto para saber los precios actuales</p>
+            ))}
           </div>
-          <div className="col-md-5">
-            <div
-              style={{
-                width: "100%",
-                position: "relative",
-                height: "600px",
-              }}
-            >
-              <Image
-                className="img-fluid rounded  border border-primary"
-                src="https://res.cloudinary.com/duaj7oxcq/image/upload/v1640303365/estudio_fotografico_perez/ampliaciones_mi5myb.jpg"
-                fill
-                style={{ objectFit: "cover" }}
-                sizes='100%'
-                alt="Tinta de las impresiones de fotografias"
-              />
-            </div>
-          </div>
-        </div>
+        </BlurFade>
+
+        <ServiceCta text="¿Necesitas imprimir tus fotos favoritas?" />
       </div>
+    </div>
   );
 }

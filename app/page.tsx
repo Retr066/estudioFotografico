@@ -1,30 +1,29 @@
-import { Carrusel, ListCards } from '../components';
+import CtaBanner from '@/components/home/CtaBanner';
+import Faq from '@/components/home/Faq';
+import Gallery from '@/components/home/Gallery';
+import Highlights from '@/components/home/Highlights';
+import Hero from '@/components/home/Hero';
+import Manifesto from '@/components/home/Manifesto';
+import Process from '@/components/home/Process';
+import RestorationShowcase from '@/components/home/RestorationShowcase';
+import ServicesBento from '@/components/home/ServicesBento';
+import SocialStrip from '@/components/home/SocialStrip';
+import Testimonials from '@/components/home/Testimonials';
 
 const Home = () => {
   return (
     <>
-    
-        <Carrusel />
-        <section className="container my-5">
-          <div className="row align-items-center">
-            <h1 className="text-center">BIENVENIDOS</h1>
-            <figure className="text-center">
-              <blockquote className="blockquote">
-                <p className="mb-0">
-                  Somos una microempresa dedicada al rubro fotográfico, nos orientamos a brindar soluciones e ideas creativas para tus
-                  proyectos fotográfico. Nuestro objetivo es trasmitir a través de la fotografía, la historia que deseas contar y guardar
-                  ese momento valioso para ti.
-                </p>
-              </blockquote>
-              <figcaption className="blockquote-footer">
-                Micrompresa
-                <cite title="Source Title">Estudio Fotografico Perez</cite>
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-        <ListCards />
-    
+      <Hero />
+      <Manifesto />
+      <ServicesBento />
+      <Process />
+      <RestorationShowcase />
+      <Gallery />
+      <Highlights />
+      <Testimonials />
+      <SocialStrip />
+      <Faq />
+      <CtaBanner />
     </>
   );
 };
