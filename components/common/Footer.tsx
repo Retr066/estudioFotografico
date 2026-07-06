@@ -51,19 +51,19 @@ export default React.forwardRef(function Footer() {
                 <h6 className="text-uppercase fw-bold mb-4">Enlaces útiles</h6>
 
                 <p>
-                  <Link href="/nosotros" passHref legacyBehavior>
-                    <a className="text-reset">Nosotros</a>
+                  <Link href="/nosotros" className="text-reset">
+                    Nosotros
                   </Link>
                 </p>
                 <p>
-                  <Link href="/promociones" passHref legacyBehavior>
-                    <a className="text-reset">Promociones</a>
+                  <Link href="/promociones" className="text-reset">
+                    Promociones
                   </Link>
                 </p>
 
                 <p>
-                  <Link href="/contacto" passHref legacyBehavior>
-                    <a className="text-reset">Contactanos</a>
+                  <Link href="/contacto" className="text-reset">
+                    Contactanos
                   </Link>
                 </p>
               </div>
@@ -87,7 +87,6 @@ export default React.forwardRef(function Footer() {
           </div>
         </section>
       </div>
-
       <div className="text-center p-3" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
         © Todos los Derechos Reservados - Estudio Fotografico Peréz | Diseñado por:
         <a className="text-white" target={"_blank"} rel="noreferrer" href="https://www.linkedin.com/in/jherson-lopez-a70584225/">

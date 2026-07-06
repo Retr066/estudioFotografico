@@ -15,11 +15,11 @@ export default function Header() {
     <header>
       <nav className={`${styles.header} navbar navbar-expand-lg navbar-light bg-light`}>
         <div className="container-fluid">
-          <Link href="/" passHref legacyBehavior>
-            <a className="navbar-brand d-flex align-items-center">
-              <Image src={logo} alt="logo Estudio Fotográfico Perez" width="90" height="90" className="d-inline-block align-text-top" />
-              <span className="ms-2 d-none d-sm-block">Estudio Fotográfico Pérez</span>
-            </a>
+          <Link href="/" className="navbar-brand d-flex align-items-center">
+
+            <Image src={logo} alt="logo Estudio Fotográfico Perez" width="90" height="90" className="d-inline-block align-text-top" />
+            <span className="ms-2 d-none d-sm-block">Estudio Fotográfico Pérez</span>
+
           </Link>
           <button
             className="navbar-toggler"
@@ -36,10 +36,10 @@ export default function Header() {
           <div className="collapse navbar-collapse justify-content-end" id="navbarColor02">
             <ul className="navbar-nav d-flex ">
               <li className="nav-item">
-                <Link href="/" passHref legacyBehavior>
-                  <a className={`nav-link ${pathname == "/" ? "active" : ""} `}>
-                    <FontAwesomeIcon icon={faHome} style={{ width: 25, height: 25 }} />
-                  </a>
+                <Link href="/" className={`nav-link ${pathname == "/" ? "active" : ""} `}>
+
+                  <FontAwesomeIcon icon={faHome} style={{ width: 25, height: 25 }} />
+
                 </Link>
               </li>
               <li className="nav-item dropdown">
@@ -61,41 +61,55 @@ export default function Header() {
                   Servicios
                 </a>
                 <div className="dropdown-menu">
-                  <Link href="/servicios/impresiones" passHref legacyBehavior>
-                    <a className={`dropdown-item  ${pathname == "/servicios/impresiones" ? "active" : ""} `}>Impresiones</a>
+                  <Link
+                    href="/servicios/impresiones"
+                    className={`dropdown-item  ${pathname == "/servicios/impresiones" ? "active" : ""} `}>
+                    Impresiones
                   </Link>
                   <div className="dropdown-divider"></div>
-                  <Link href="/servicios/sesion-fotografico" passHref legacyBehavior>
-                    <a className={`dropdown-item  ${pathname == "/servicios/sesion-fotografico" ? "active" : ""} `}>
+                  <Link
+                    href="/servicios/sesion-fotografico"
+                    className={`dropdown-item  ${pathname == "/servicios/sesion-fotografico" ? "active" : ""} `}>
+                    
                       Sesión Fotográfico
-                    </a>
+                    
                   </Link>
 
                   <div className="dropdown-divider"></div>
-                  <Link href="/servicios/cuadros" passHref legacyBehavior> 
-                    <a className={`dropdown-item  ${pathname == "/servicios/cuadros" ? "active" : ""} `}>Cuadros</a>
+                  <Link
+                    href="/servicios/cuadros"
+                    className={`dropdown-item  ${pathname == "/servicios/cuadros" ? "active" : ""} `}> 
+                    Cuadros
                   </Link>
 
                   <div className="dropdown-divider"></div>
-                  <Link href="/servicios/diseno-grafico" passHref legacyBehavior>
-                    <a className={`dropdown-item  ${pathname == "/servicios/diseno-grafico" ? "active" : ""} `}>Diseño Gráfico</a>
+                  <Link
+                    href="/servicios/diseno-grafico"
+                    className={`dropdown-item  ${pathname == "/servicios/diseno-grafico" ? "active" : ""} `}>
+                    Diseño Gráfico
                   </Link>
                 </div>
               </li>
 
               <li className="nav-item">
-                <Link href="/nosotros" passHref legacyBehavior>
-                  <a className={`nav-link ${pathname == "/nosotros" ? "active" : ""} `}>Nosotros</a>
+                <Link
+                  href="/nosotros"
+                  className={`nav-link ${pathname == "/nosotros" ? "active" : ""} `}>
+                  Nosotros
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/promociones" passHref legacyBehavior>
-                  <a className={`nav-link ${pathname == "/promociones" ? "active" : ""} `}>Promociones</a>
+                <Link
+                  href="/promociones"
+                  className={`nav-link ${pathname == "/promociones" ? "active" : ""} `}>
+                  Promociones
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/contacto" passHref legacyBehavior>
-                  <a className={`nav-link ${pathname == "/contacto" ? "active" : ""} `}>Contactanos</a>
+                <Link
+                  href="/contacto"
+                  className={`nav-link ${pathname == "/contacto" ? "active" : ""} `}>
+                  Contactanos
                 </Link>
               </li>
             </ul>
