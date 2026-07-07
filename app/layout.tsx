@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/sonner';
 import SmoothScrollProvider from './providers/SmoothScrollProvider';
 import './globals.css';
 import type { Metadata } from "next";
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -136,6 +137,7 @@ export default function RootLayout({
         </SmoothScrollProvider>
         <Toaster position="top-right" />
       </body>
+      <GoogleTagManager gtmId="GTM-NFJHMS53" />
     </html>
   );
 }
