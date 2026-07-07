@@ -23,7 +23,7 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Correo',
-    value: 'foto_estudioperez@hotmail.com',
+    value: 'foto.estudioperez2025@gmail.com',
   },
   {
     icon: Phone,

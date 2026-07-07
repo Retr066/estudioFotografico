@@ -106,7 +106,7 @@ const structuredData = {
   image: ogImage,
   url: siteUrl,
   telephone: "+51924606740",
-  email: "foto_estudioperez@hotmail.com",
+  email: "foto.estudioperez2025@gmail.com",
   address: {
     "@type": "PostalAddress",
     streetAddress: "AV. Los Quechuas Nº 1142, Salamanca",

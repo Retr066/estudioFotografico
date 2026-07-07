@@ -80,7 +80,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="mt-0.5 size-4 shrink-0 text-bronze" />
-                foto_estudioperez@hotmail.com
+                foto.estudioperez2025@gmail.com
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="mt-0.5 size-4 shrink-0 text-bronze" />+ 51 924 606 740
